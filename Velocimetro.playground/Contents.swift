@@ -3,6 +3,10 @@
 import UIKit
 
 
+
+//----------------------
+//Enum Velocidades
+//----------------------
 enum Velocidades: Int{
     
     case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta =120
@@ -13,7 +17,9 @@ enum Velocidades: Int{
     }
 }
 
-
+//----------------------
+//Clase Auto
+//----------------------
 class Auto {
     var velocidad = Velocidades(velocidadInicial: <#T##Velocidades#>)
     
