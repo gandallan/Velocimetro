@@ -9,30 +9,60 @@ import UIKit
 //----------------------
 enum Velocidades: Int{
     
-    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta =120
+    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120
     
-    init(velocidadInicial: Velocidades){
-    
+    init(velocidadInicial:Velocidades){
+        
         self = velocidadInicial
+    
     }
 }
+
 
 //----------------------
 //Clase Auto
 //----------------------
 class Auto {
-    var velocidad = Velocidades(velocidadInicial: <#T##Velocidades#>)
-    
-    init(){
+
+    var velocidad = Velocidades.self
+
+    init(velocidadInicial:Velocidades){
         
+        self.velocidad.init(velocidadInicial:Velocidades.Apagado)
+        
+    }
+    
+    
+    func cambioDeVelocidad() -> (actual: Int, velocidadEnCadea:String){
+        
+        let actual = velocidad.Apagado.rawValue
+        let mensaje = " "
+        
+        let resultado = (actual, mensaje)
+        
+        return resultado
         
     }
     
-    func cambioDeVelocidad(itereciones:Int)->(actual: Int, velocidadEnCadena: String){
-        
-        
-        
-    }
+    
 }
 
-Auto.cambioDeVelocidad(20)
+
+
+
+
+
+
+
+//for (var cambios = 1; cambios <= 20; cambios++) {
+// 
+//   print("\(cambios)")
+//    
+//}
+
+
+
+
+
+
+
