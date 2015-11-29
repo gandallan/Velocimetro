@@ -4,9 +4,6 @@ import UIKit
 
 
 
-//----------------------
-//Enum Velocidades
-//----------------------
 enum Velocidades: Int{
     
     case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120
@@ -14,107 +11,67 @@ enum Velocidades: Int{
     init(velocidadInicial:Velocidades){
         
         self = velocidadInicial
-    
+        
     }
 }
 
 
-//----------------------
-//Clase Auto
-//----------------------
 class Auto {
-
-    var velocidad = Velocidades.self
     
-    init(velocidadInicial:Velocidades){
+    var velocidad: Velocidades?
+    
+    
+    init(velocidadInicial:Int){
         
-        self.velocidad.init(velocidadInicial:Velocidades.Apagado)
         
     }
     
-    
-//    
-//    func cambioDeVelocidad() -> (actual: Int, velocidadEnCadea:String){
-//        
-//        let actual = velocidad.Apagado.rawValue
-//        let mensaje = " "
-//        
-//        let resultado = (actual, mensaje)
-//        
-//        return resultado
-//        
-//    }
-    
-    
-}
-
-var actual:Int = 0
-var velocidadEnCadena = ""
-
-
-func cambioDeVelocidades()-> (actual:Int, velocidadEnCadena:String){
-   
-
-    actual++
-    
-    
-    switch(actual){
-    
-    case 2:
+    func cambioDeVelocidad()-> (actual:Int, velocidadEnCadena: String){
         
-        actual = 2
-    
-    case 2...19:
+        var velocidadEnCadena = ""
         
-        actual = 19
-        
-    case 20:
-        
-        velocidadEnCadena = " Velocidad Baja "
-        actual = 20
-        
-    case 21...49:
-        
-        actual = 49
-        
-    case 50:
-        
-        velocidadEnCadena = "velocidad Media"
-        actual = 50
-        
-    case 51...119:
-        
-        actual = 119
-        
-    case 120:
-        
-        velocidadEnCadena = "velocidad Alta"
-    
-    case 121...155:
-        
-        actual = 49
-        
-        
-    default:
-        
-        velocidadEnCadena = " "
-
+        switch(self.velocidad){
+            
+        case nil:
+            self.velocidad = Velocidades.Apagado
+            velocidadEnCadena = " Apagado"
+            
+        case  Velocidades.Apagado? :
+            self.velocidad = Velocidades.VelocidadBaja
+            velocidadEnCadena = " VelocidadBaja"
+            
+        case  Velocidades.VelocidadBaja? :
+            self.velocidad = Velocidades.VelocidadMedia
+            velocidadEnCadena = "VelocidadBajo"
+            
+        case  Velocidades.VelocidadMedia? :
+            self.velocidad = Velocidades.VelocidadAlta
+            velocidadEnCadena = "VelocidadMedio"
+            
+        case  Velocidades.VelocidadAlta? :
+            self.velocidad = Velocidades.VelocidadMedia
+            velocidadEnCadena = " VelocidadAlta"
+            
+            
+            
+            
+            
         }
-
+        return((self.velocidad?.rawValue)!,velocidadEnCadena)
+    }
     
-    return (actual, velocidadEnCadena)
-        
+    
 }
 
 
+var auto = Auto.init(velocidadInicial: 0)
 
-
-for (var cambios = 1; cambios <= 20; cambios++) {
+for var i = 0;i < 20;i++ {
     
-    cambioDeVelocidades()
+    var car = auto.cambioDeVelocidad()
     
-    print("\(cambios)" + " " + "\(cambioDeVelocidades())")
-
+    print("\(i+1)." + " \(car.actual)," + car.velocidadEnCadena + "\n")
+    
 }
 
 
